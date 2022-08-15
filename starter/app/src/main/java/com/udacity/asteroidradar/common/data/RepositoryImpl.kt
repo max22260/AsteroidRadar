@@ -1,6 +1,5 @@
 package com.udacity.asteroidradar.common.data
 
-import android.database.DatabaseUtils
 import com.udacity.asteroidradar.common.data.api.Api
 import com.udacity.asteroidradar.common.data.api.model.ApiPictureOfDay
 import com.udacity.asteroidradar.common.data.api.parseAsteroidsJsonResult
@@ -14,6 +13,7 @@ import com.udacity.asteroidradar.common.utils.DateUtils.getCurrentDate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import org.json.JSONObject
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -25,7 +25,9 @@ class RepositoryImpl @Inject constructor(private val cache: Cache, private val a
         try {
 
             val jsonObject = api.fetchAsteroid(startDate = getCurrentDate(), endDate = "")
-            return parseAsteroidsJsonResult(jsonObject)
+
+
+            return parseAsteroidsJsonResult(JSONObject(jsonObject))
 
         } catch (exception: HttpException) {
             throw NetworkException(exception.message ?: "Code ${exception.code()}")
