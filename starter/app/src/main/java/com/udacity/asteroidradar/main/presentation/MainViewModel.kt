@@ -29,7 +29,7 @@ class MainViewModel @Inject constructor(
 
     init {
         _state.value = MainViewState()
-        //  onRequestAsteroid()
+          onRequestAsteroid()
         onRequestPictureOfDay()
         onGetLocalAsteroids()
     }
@@ -59,6 +59,7 @@ class MainViewModel @Inject constructor(
                 }
             }
         }
+
     }
 
 
