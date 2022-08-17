@@ -25,5 +25,15 @@ object DateUtils {
 
         return formattedDateList
     }
+
+
+    fun getPreviousDate(): String {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, -1)
+        val previousTime = calendar.time
+        val dateFormat = SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT, Locale.getDefault())
+        return dateFormat.format(previousTime)
+
+    }
 }
 

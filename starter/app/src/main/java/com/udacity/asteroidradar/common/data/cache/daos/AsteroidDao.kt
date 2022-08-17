@@ -15,7 +15,7 @@ interface AsteroidDao {
     @Query("SELECT * FROM Asteroids ORDER BY id DESC")
     fun getAllAsteroid() : Flow<List<CachedAsteroid>>
 
-    @Query("DELETE FROM Asteroids WHERE closeApproachDate != :date")
+    @Query("DELETE FROM Asteroids WHERE closeApproachDate == :date")
     fun deleteAsteroid(date : String)
 
 }
